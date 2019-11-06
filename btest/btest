@@ -1,0 +1,11 @@
+#!/bin/bash
+export WINEPREFIX="$HOME"/.btest/wine
+export WINEARCH=win64
+export WINEDLLOVERRIDES="mscoree,mshtml=" # disable mono, gecko
+export WINEDEBUG=-all
+if [ ! -d "$HOME"/.btest ] ; then
+   mkdir -p "$HOME"/.btest/wine
+   wineboot -u
+fi
+
+wine /opt/btest/btest.exe "$@"

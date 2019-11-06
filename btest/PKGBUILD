@@ -1,0 +1,28 @@
+# Maintainer: cmbch <combucho+arch at gmail.com>
+pkgname=btest
+pkgver=0.1
+pkgrel=1
+pkgdesc="Mikrotik Bandwidth Test (wine)"
+arch=('x86_64' 'i686')
+url="http://www.mikrotik.com"
+license=('custom')
+depends=('wine')
+optdepends=(
+  'ttf-ms-fonts: for better fonts'
+  )
+install=${pkgname}.install
+source=("${pkgname}-${pkgver}.exe::http://www.mikrotik.com/download/btest.exe"
+        "${pkgname}.desktop"
+        "${pkgname}.svg"
+        "${pkgname}" )
+md5sums=('2143135f5838498121c97a1fb915c170'
+         '01eac68b5f916d0109d50437d2c6b780'
+         '07faff0628127ca82007dbfb8d09dca8'
+         'e06920734f7c7e4efb4508aa5c5aefda')
+
+package() {
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.exe" "${pkgdir}/opt/${pkgname}/${pkgname}.exe"
+  install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm655 "${srcdir}/${pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
+  install -Dm655 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+}

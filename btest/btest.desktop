@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Btest
+Comment=Mikrotik Bandwitdth Test
+Exec=/usr/bin/btest
+Icon=/usr/share/pixmaps/btest.svg
+Terminal=false
+Categories=Utility
+StartupWMClass=btest.exe
